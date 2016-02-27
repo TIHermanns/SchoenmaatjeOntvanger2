@@ -1,0 +1,144 @@
+<mvc:View controllerName="Schoenmaatje.controller.Sender" displayBlock="true" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<App>
+		<pages>
+			<Page navButtonPress="onNavBack" showNavButton="true" title="Jij">
+				<headerContent></headerContent>
+				<content>
+					
+					<Toolbar>
+						<ToolbarSpacer/>
+						<SegmentedButton selectedButton="sender">
+							<Button id="sender" press="setHomeCountry" text="{i18n>SendingCountry}"/>
+							<Button press="setForeignCountry" text="{i18n>DestinationCountry}"/>
+							<Button press="showCountryFragment" text="{i18n>ShowCountry}"/>
+							<Button id="timeLineId" press="onShowTimeline" text="Time Line"/>
+						</SegmentedButton>
+						<ToolbarSpacer/>
+							
+							
+					</Toolbar>
+					<Panel id="mainPanel" visible="true" backgroundDesign="Transparent">
+					<l:Grid class="sapUiSmallMarginTop" defaultSpan="L6 M8 S12" hSpacing="2" visible="{path: 'Usertype', formatter:'.Formatter.isSender'}">
+						<l:content>
+							<VBox>
+								<Image src="data:image/png;base64,{FotoUser}" width="100%"></Image>
+								<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+									<sap.ui.layout.form:content>
+										<Label text="{i18n>Voornaam}"/>
+										<Input value="{Voornaam}"/>
+										<Label text="{i18n>Country}"/>
+										<Input value="{Country_V}"/>	
+										<Label text="{i18n>FavSport}"/>
+										<Input class="nameTitle" value="{FavSport}"/>
+										<Label text="{i18n>FavMuziek}"/>
+										<Input class="nameTitle" value="{FavMuziek}"/>
+										<Label text="{i18n>FavHobby}"/>
+										<Input class="nameTitle" value="{FavHobby}"/>
+										<Label text="{i18n>FavKleur}"/>
+										<Input class="nameTitle" value="{FavKleur}"/>
+										<Label text="{i18n>Idool}"/>
+										<Input class="nameTitle" value="{Idool}"/>
+										<Label text="{i18n>Beroep}"/>
+										<Input class="nameTitle" value="{Beroep}"/>
+									</sap.ui.layout.form:content>
+								</sap.ui.layout.form:SimpleForm>
+								<Button press="takePhotoUser" text="Maak een foto van jezelf!" visible="{path: 'Usertype', formatter:'.Formatter.isSender'}" width="100%"></Button>
+							</VBox>
+							<VBox>
+								<Image src="data:image/png;base64,{FotoFamilie}" width="100%"></Image>
+								<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+									<sap.ui.layout.form:content>
+										<Title text="{i18n>Familie}"></Title>
+										<Label text="{i18n>Vader}"/>
+										<Input value="{Vader}"/>
+										<Text text="{i18n>Moeder}"></Text>
+										<Input value="{Moeder}"/>
+										<Text text="{i18n>BroersAantal}"></Text>
+										<Input value="{BroersAantal}"/>
+										<Text text="{i18n>ZustersAantal}"></Text>
+										<Input value="{ZussenAantal}"/>
+									</sap.ui.layout.form:content>
+								</sap.ui.layout.form:SimpleForm>
+								<Button press="takePhotoFamily" text="Maak een foto van je familie!" width="100%"></Button>
+							</VBox>
+							<VBox>
+								<Image src="data:image/png;base64,{FotoKlas}" width="100%"></Image>
+								<Button press="takePhotoClass" text="Maak een foto van je klas!" width="100%"></Button>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>Wens}"/>
+								<TextArea rows="3" value="{Wens}" width="100%"/>
+							</VBox>
+						</l:content>
+					</l:Grid>
+					<l:Grid class="sapUiSmallMarginTop" defaultSpan="L6 M8 S12" hSpacing="2" visible="{path: 'Usertype', formatter:'.Formatter.isReceiver'}">
+						<l:content>
+							<VBox>
+								<Image src="data:image/png;base64,{FotoUser}" width="100%"></Image>
+								<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+									<sap.ui.layout.form:content>
+										<Label text="{i18n>Voornaam}"/>
+										<Input value="{Voornaam}" editable="false"/>
+										<Label text="{i18n>Country}"/>
+										<Input value="{Country_O}" editable="false"/>
+										<Label text="{i18n>FavSport}"/>
+										<Input class="nameTitle" value="{FavSport}" editable="false"/>
+										<Label text="{i18n>FavMuziek}"/>
+										<Input class="nameTitle" value="{FavMuziek}" editable="false"/>
+										<Label text="{i18n>FavHobby}"/>
+										<Input class="nameTitle" value="{FavHobby}" editable="false"/>
+										<Label text="{i18n>FavKleur}"/>
+										<Input class="nameTitle" value="{FavKleur}" editable="false"/>
+										<Label text="{i18n>Idool}"/>
+										<Input class="nameTitle" value="{Idool}" editable="false"/>
+										<Label text="{i18n>Beroep}"/>
+										<Input class="nameTitle" value="{Beroep}" editable="false"/>
+									</sap.ui.layout.form:content>
+								</sap.ui.layout.form:SimpleForm>
+							</VBox>
+							<VBox>
+								<Image src="data:image/png;base64,{FotoFamilie}" width="100%"></Image>
+								<sap.ui.layout.form:SimpleForm editable="false" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+									<sap.ui.layout.form:content>
+										<Title text="{i18n>Familie}" editable="false"></Title>
+										<Label text="{i18n>Vader}"/>
+										<Input value="{Vader}" editable="false"/>
+										<Text text="{i18n>Moeder}"></Text>
+										<Input value="{Moeder}" editable="false"/>
+										<Text text="{i18n>BroersAantal}"></Text>
+										<Input value="{BroersAantal}" editable="false"/>
+										<Text text="{i18n>ZustersAantal}"></Text>
+										<Input value="{ZussenAantal}" editable="false"/>
+									</sap.ui.layout.form:content>
+								</sap.ui.layout.form:SimpleForm>
+							</VBox>
+							<VBox>
+								<Image src="data:image/png;base64,{FotoKlas}" width="100%"></Image>
+								
+							</VBox>
+							<VBox>
+								<Label text="{i18n>Wens}"/>
+								<TextArea rows="3" value="{Wens}" editable="false" width="100%"/>
+							</VBox>
+						</l:content>
+					
+					</l:Grid>
+					
+					</Panel> 
+					
+					<Panel visible="false" id="fragmentPanel">
+					<core:Fragment fragmentName="Schoenmaatje.fragments.Country" type="XML" />
+						</Panel>
+
+				</content>
+									<footer>
+						<Toolbar>
+							<ToolbarSpacer/>
+								<Button id="saveFooter" icon="sap-icon://save" type="Accept" press="updateData" text="Save"/>
+						</Toolbar>
+					</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

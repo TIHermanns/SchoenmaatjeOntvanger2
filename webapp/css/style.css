@@ -1,0 +1,16 @@
+.overviewGrid{
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overviewGrid .sapMImg{
+	transform: scale(0.5, 0.5);
+	-ms-transform: scale(0.5, 0.5);
+	-webkit-transform: scale(0.5, 0.5);
+	margin-top:-50px;
+	margin-bottom:-50px;
+}
+
+.inputForm{
+	width: 150px;
+}

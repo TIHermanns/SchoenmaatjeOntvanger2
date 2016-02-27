@@ -1,0 +1,120 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "Schoenmaatje",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.32.0"
+		},
+		"dataSources": {
+			"schoenendozenSource": {
+				"uri": "/sap/opu/odata/sap/ZHCK_EDUKANS_SRV/",
+				"type": "OData",
+				"settings": {
+				  "odataVersion": "2.0"
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "Schoenmaatje.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "Schoenmaatje.i18n.i18n"
+				}
+			},
+
+			"": {
+				"dataSource": "schoenendozenSource",
+				"settings": {
+					"metadataUrlParams": {},
+					"defaultBindingMode": "TwoWay",
+					"loadMetadataAsync": true,
+					"useBatch": false
+				}
+			}
+
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "Schoenmaatje.view",
+				"controlId": "app",
+				"controlAggregation": "pages"
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "overview",
+				"target": "overview"
+			}, {
+				"pattern": "{sender}",
+				"name": "sender",
+				"target": "sender"
+			}],
+			"targets": {
+				"overview": {
+					"viewName": "Overview"
+				},
+				"sender": {
+					"viewName": "Sender"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		}
+	}
+}
